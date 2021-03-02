@@ -4,9 +4,9 @@ import me.tomasztopola.utils.Location;
 
 public interface BattleShipClient {
 
-    public int getFloatingShips();
-    public void receiveAttack(Location target);
-    public Location attack();
-    public String getBotName();
+    int getFloatingShips();
+    void receiveAttack(Location target);
+    Location attack();
+    String getBotName();
 
 }
