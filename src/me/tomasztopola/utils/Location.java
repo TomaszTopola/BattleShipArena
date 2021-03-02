@@ -17,8 +17,8 @@ public class Location {
     //assertions
     private void assertRules(int digit){
         int boardSize = Rules.getBoardSize();
-        assert ( digit > 0 ) : "Coordinate should have positive value";
-        assert ( digit<=boardSize ) : "Coordinate should be smaller or equal to Rules.getBoardSize()";
+        assert ( digit >= 0 ) : "Coordinate should have positive value. Got " +  digit;
+        assert ( digit<=boardSize ) : "Coordinate should be smaller or equal to " + Rules.getBoardSize() + ". Got " + digit;
     }
 
     //getters
@@ -30,12 +30,15 @@ public class Location {
     }
 
     public Location vector(int x, int y){
-        x = x+this.x;
-        y = y+this.y;
-        if(x < 0) x = 0;
-        else if(x > 9) x = 9;
-        if(y < 0 ) y = 0;
-        else if(y < 9) y = 9;
-        return new Location(x, y);
+        int returnX = x+this.x;
+        int returnY = y+this.y;
+
+        if(returnX < 0) returnX = 0;
+        else if(returnX > 9) returnX = 9;
+
+        if(returnY < 0 ) returnY = 0;
+        else if(returnY > 9) returnY = 9;
+
+        return new Location(returnX, returnY);
     }
 }
