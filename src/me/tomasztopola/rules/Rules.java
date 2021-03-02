@@ -16,6 +16,15 @@ public class Rules {
         return new ShipsConfig(config);
     }
 
+    public static PlacementRules getPlacementRules(){
+        PlacementRules placementRules;
+        placementRules = new PlacementRules(false, false);
+//        placementRules = new PlacementRules(false, true);
+//        placementRules = new PlacementRules(true, false);
+//        placementRules = new PlacementRules(true, true);
+        return placementRules;
+    }
+
     public static void assertClientRules(BattleShipClient client){
         assert Rules.getShipsConfig().getSumOfShips() == client.getFloatingShips() :
                 "Client has different amount of ships (" + client.getFloatingShips() + ") than expected (" +
