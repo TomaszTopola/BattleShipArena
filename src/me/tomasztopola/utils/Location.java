@@ -4,13 +4,12 @@ import me.tomasztopola.rules.Rules;
 
 public class Location {
 
-    private int x;
-    private int y;
+    final private int x;
+    final private int y;
 
     Location(int x, int y){
         assertRules(x);
         assertRules(y);
-
         this.x = x;
         this.y = y;
     }
@@ -28,16 +27,6 @@ public class Location {
     }
     public int getY(){
         return this.y;
-    }
-
-    //setters
-    public void setX(int x){
-        assertRules(x);
-        this.x = x;
-    }
-    public void setY(int y){
-        assertRules(y);
-        this.y = y;
     }
 
     public Location vector(int x, int y){
