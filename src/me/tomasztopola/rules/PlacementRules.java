@@ -10,10 +10,10 @@ public class PlacementRules {
         this.allowSideTouching = allowSideTouching;
     }
 
-    public boolean getSideTouching(){
+    public boolean getAllowSideTouching(){
         return allowSideTouching;
     }
-    public boolean getCornerTouching(){
+    public boolean getAllowCornerTouching(){
         return allowCornerTouching;
     }
 }

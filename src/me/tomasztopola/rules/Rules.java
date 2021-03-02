@@ -30,4 +30,8 @@ public class Rules {
                 "Client has different amount of ships (" + client.getFloatingShips() + ") than expected (" +
                 Rules.getShipsConfig().getSumOfShips() + ")";
     }
+
+    public static boolean printBoardAsArray(){
+        return false;
+    }
 }

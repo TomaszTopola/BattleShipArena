@@ -10,8 +10,8 @@ public class ShipsConfig {
         assert ships.length > 1 : "Min. ships amount is 2. Got " + ships.length;
         assert ships.length < 7 : "Max. ships amount is 6. Got " + ships.length;
 
-        for( int ship : this.shipsList ){
-            assert ship > 2 : "Min. ship length is 2. Got " + ship;
+        for( int ship : this.shipsList ) {
+            assert ship > 1 : "Min. ship length is 2. Got " + ship;
             assert ship < 6 : "Max. ship length is 5. Got " + ship;
 
             this.sumOfShips += ship;
