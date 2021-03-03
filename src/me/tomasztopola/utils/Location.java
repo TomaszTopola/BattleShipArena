@@ -7,7 +7,7 @@ public class Location {
     final private int x;
     final private int y;
 
-    Location(int x, int y){
+    public Location(int x, int y){
         assertRules(x);
         assertRules(y);
         this.x = x;

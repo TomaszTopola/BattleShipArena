@@ -6,7 +6,7 @@ public interface BattleShipClient {
 
     int getFloatingShips();
     void receiveAttack(Location target);
-    Location attack();
+    Location attack(ClientData opponent);
     String getBotName();
 
 }
