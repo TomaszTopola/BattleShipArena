@@ -1,6 +1,8 @@
 package me.tomasztopola;
 
-import me.tomasztopola.clients.tomasztopola.NewHope;
+import me.tomasztopola.clients.JustRandomClient;
+import me.tomasztopola.clients.MindfulButStillRandomClient;
+import me.tomasztopola.clients.StupidStubbornClient;
 import me.tomasztopola.competition.Contest;
 import me.tomasztopola.competition.OneVsOne;
 import me.tomasztopola.utils.BoardGenerator;
@@ -14,12 +16,11 @@ public class Main {
 
     private static void competition(){
         Contest contest = new Contest();
-        contest.addCompetitor( new NewHope(17));
     }
 
     private static void oneVsOne(){
         OneVsOne competition;
-        competition = new OneVsOne(new NewHope(17), new NewHope(17));
+        competition = new OneVsOne(new JustRandomClient(), new MindfulButStillRandomClient());
         competition.runBattle();
     }
 
