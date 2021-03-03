@@ -19,10 +19,13 @@ public class BoardGenerator {
         this.boardSize = Rules.getBoardSize();
     }
 
-    public int[][] getBoard(){return board;}
+    public int[][] getBoard(){
+        assert board != null : "Board needs to be generated first. Use generate() or generateEmpty()";
+        return board;
+    }
 
-    public void generateEmpty(){
-        board = new int[][] {
+    public static int[][] generateEmpty(){
+        return new int[][] {
                 {0,0,0,0,0,0,0,0,0,0},
                 {0,0,0,0,0,0,0,0,0,0},
                 {0,0,0,0,0,0,0,0,0,0},
@@ -38,7 +41,7 @@ public class BoardGenerator {
 
     public void generate(){
         int[] config = shipsConfig.getShipsList();
-        generateEmpty();
+        board = generateEmpty();
         for(int ship : config){
             this.placeShip(ship);
         }
@@ -136,22 +139,7 @@ public class BoardGenerator {
         System.out.println();
     }
 
-    public void hardcoded(){
-        board = new int[][] {
-            {1,0,0,0,0,1,1,1,1,0},
-            {1,0,0,0,0,0,0,0,0,0},
-            {1,0,0,0,0,0,0,0,0,0},
-            {1,0,0,0,0,1,1,1,0,0},
-            {1,0,0,0,0,0,0,0,0,0},
-            {0,0,1,0,0,0,0,0,0,0},
-            {0,0,1,0,0,0,0,1,0,0},
-            {0,0,1,0,0,0,0,1,0,0},
-            {0,0,0,0,0,0,0,0,0,0},
-            {0,0,0,0,0,0,0,0,0,0},
-        };
-    }
-
-    private class TargetLocation extends Location{
+    private static class TargetLocation extends Location{
         TargetLocation(int x, int y, boolean vertical){
             super(x,y);
             this.vertical = vertical;
