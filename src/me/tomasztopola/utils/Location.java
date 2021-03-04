@@ -6,6 +6,7 @@ public class Location {
 
     final private int x;
     final private int y;
+    final private int boardSize = Rules.getBoardSize();
 
     public Location(int x, int y){
         assertRules(x);
@@ -16,9 +17,8 @@ public class Location {
 
     //assertions
     private void assertRules(int digit){
-        int boardSize = Rules.getBoardSize();
         assert ( digit >= 0 ) : "Coordinate should have positive value. Got " +  digit;
-        assert ( digit<=boardSize ) : "Coordinate should be smaller or equal to " + Rules.getBoardSize() + ". Got " + digit;
+        assert ( digit < boardSize ) : "Coordinate should be smaller or equal to " + Rules.getBoardSize() + ". Got " + digit;
     }
 
     //getters
@@ -30,15 +30,15 @@ public class Location {
     }
 
     public Location vector(int x, int y){
-        int returnX = x+this.x;
-        int returnY = y+this.y;
+        return new Location(
+            this.checkIfInBoundsForVector(x+this.x),    //X
+            this.checkIfInBoundsForVector(y+this.y)     //Y
+        );
+    }
 
-        if(returnX < 0) returnX = 0;
-        else if(returnX > 9) returnX = 9;
-
-        if(returnY < 0 ) returnY = 0;
-        else if(returnY > 9) returnY = 9;
-
-        return new Location(returnX, returnY);
+    private int checkIfInBoundsForVector(int number){
+        if(number < 0 ) return 0;
+        else if(number >= boardSize) return boardSize-1;
+        else return number;
     }
 }
