@@ -2,6 +2,7 @@ package me.tomasztopola;
 
 import me.tomasztopola.clients.JustRandomClient;
 import me.tomasztopola.clients.MindfulButStillRandomClient;
+import me.tomasztopola.clients.NotSoSimpleClient;
 import me.tomasztopola.clients.StupidStubbornClient;
 import me.tomasztopola.competition.Contest;
 import me.tomasztopola.competition.OneVsOne;
@@ -15,8 +16,8 @@ public class Main {
     public static void main(String[] args) {
 //        competition();
 //        oneVsOne();
-//        testClient();
-        testBoardGenerator();
+        testClient();
+//        testBoardGenerator();
     }
 
     private static void competition(){
@@ -25,12 +26,12 @@ public class Main {
 
     private static void oneVsOne(){
         OneVsOne competition;
-        competition = new OneVsOne(new JustRandomClient(), new MindfulButStillRandomClient());
+        competition = new OneVsOne(new JustRandomClient(), new NotSoSimpleClient());
         competition.runBattle();
     }
 
     private static void testClient(){
-        TestClient test = new TestClient(new JustRandomClient());
+        TestClient test = new TestClient(new NotSoSimpleClient());
         test.run();
     }
 
