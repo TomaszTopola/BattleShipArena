@@ -19,24 +19,24 @@ public class BoardGenerator {
         this.boardSize = Rules.getBoardSize();
     }
 
+    public BoardGenerator(ShipsConfig shipsConfig, int boardSize){
+        this.shipsConfig = shipsConfig;
+        this.boardSize = boardSize;
+    }
+
     public int[][] getBoard(){
         assert board != null : "Board needs to be generated first. Use generate() or generateEmpty()";
         return board;
     }
 
-    public static int[][] generateEmpty(){
-        return new int[][] {
-                {0,0,0,0,0,0,0,0,0,0},
-                {0,0,0,0,0,0,0,0,0,0},
-                {0,0,0,0,0,0,0,0,0,0},
-                {0,0,0,0,0,0,0,0,0,0},
-                {0,0,0,0,0,0,0,0,0,0},
-                {0,0,0,0,0,0,0,0,0,0},
-                {0,0,0,0,0,0,0,0,0,0},
-                {0,0,0,0,0,0,0,0,0,0},
-                {0,0,0,0,0,0,0,0,0,0},
-                {0,0,0,0,0,0,0,0,0,0},
-        };
+    public int[][] generateEmpty(){
+        int[][] myBoard = new int[this.boardSize][this.boardSize];
+        for(int x=0; x<this.boardSize; x++){
+            for (int y=0; y<this.boardSize; y++){
+                myBoard[x][y] = 0;
+            }
+        }
+        return myBoard;
     }
 
     public void generate(){
@@ -59,21 +59,21 @@ public class BoardGenerator {
         }
     }
 
-    private TargetLocation findSpace(int length){
+    private TargetLocation findSpace(int length) {
         boolean found = false;
         Location target = null;
         boolean vertical = false;
         while (!found){
             vertical = r.nextBoolean();
 
-            if(vertical) target = new Location(r.nextInt(10), r.nextInt(11 - length));
-            else target = new Location(r.nextInt(11-length), r.nextInt(10));
+            if(vertical) target = new Location(r.nextInt(boardSize), r.nextInt(boardSize+1 - length));
+            else target = new Location(r.nextInt(boardSize+1-length), r.nextInt(boardSize));
 
             //actual area where ship will be placed
             if(this.checkIfTaken(target, vertical, length)) continue; //check if there is space for the ship
 
             PlacementRules placementRules = Rules.getPlacementRules();
-            if (!placementRules.getAllowSideTouching()){
+            if (!placementRules.getAllowSideTouching()) {
 
                 //sides before and after ship
                 if(vertical){
@@ -94,7 +94,7 @@ public class BoardGenerator {
                 }
             }
 
-            if(!placementRules.getAllowCornerTouching()){
+            if(!placementRules.getAllowCornerTouching()) {
                 //check corners
                 if(vertical){
                     if (this.checkIfTaken(target.vector(-1, -1), true, 1)) continue;
@@ -113,18 +113,18 @@ public class BoardGenerator {
         return new TargetLocation(target.getX(), target.getY(), vertical);
     }
 
-    private boolean checkIfTaken(Location startFrom, boolean vertical, int length){
+    private boolean checkIfTaken(Location startFrom, boolean vertical, int length) {
         int x = startFrom.getX();
         int y = startFrom.getY();
         for(int i=0; i<length; i++){
-            if(x+i > 9 || y+i >9) break;
+            if(x+i >= this.boardSize || y+i >= this.boardSize) break;
             if(vertical && board[y+i][x] != 0) return true;
             if(!vertical && board[y][x+i] != 0) return true;
         }
         return false;
     }
 
-    public void print(){
+    public void print() {
         System.out.println();
         if(Rules.printBoardAsArray()) System.out.print(Arrays.deepToString(board).replaceAll("],", "]\n"));
         else{
@@ -139,7 +139,7 @@ public class BoardGenerator {
         System.out.println();
     }
 
-    private static class TargetLocation extends Location{
+    private static class TargetLocation extends Location {
         TargetLocation(int x, int y, boolean vertical){
             super(x,y);
             this.vertical = vertical;

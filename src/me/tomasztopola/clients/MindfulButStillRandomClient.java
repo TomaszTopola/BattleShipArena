@@ -17,7 +17,7 @@ public class MindfulButStillRandomClient implements BattleShipClient {
         BoardGenerator boardGenerator = new BoardGenerator();
         boardGenerator.generate();
         board = boardGenerator.getBoard();
-        this.boardOfOpponent = BoardGenerator.generateEmpty();
+        this.boardOfOpponent = new BoardGenerator().generateEmpty();
     }
 
     @Override
