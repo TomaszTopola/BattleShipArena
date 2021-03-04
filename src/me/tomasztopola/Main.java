@@ -5,13 +5,18 @@ import me.tomasztopola.clients.MindfulButStillRandomClient;
 import me.tomasztopola.clients.StupidStubbornClient;
 import me.tomasztopola.competition.Contest;
 import me.tomasztopola.competition.OneVsOne;
+import me.tomasztopola.rules.ShipsConfig;
 import me.tomasztopola.utils.BoardGenerator;
+import tests.BoardTest;
+import tests.TestClient;
 
 public class Main {
 
     public static void main(String[] args) {
 //        competition();
-        oneVsOne();
+//        oneVsOne();
+//        testClient();
+        testBoardGenerator();
     }
 
     private static void competition(){
@@ -24,12 +29,16 @@ public class Main {
         competition.runBattle();
     }
 
+    private static void testClient(){
+        TestClient test = new TestClient(new JustRandomClient());
+        test.run();
+    }
+
     private static void testBoardGenerator(){
-        BoardGenerator board = new BoardGenerator();
-        for(int i=0; i<100; i++){
-            System.out.println("Generated board No. " + i);
-            board.generate();
-            board.print();
-        }
+        BoardTest boardTest = new BoardTest(new BoardGenerator(
+                new ShipsConfig(new int[]{2,3,}),
+                5
+        ));
+        boardTest.run();
     }
 }
