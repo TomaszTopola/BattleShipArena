@@ -18,10 +18,10 @@ create your bot as class which extends SimpleClient. You can always @override ot
 
 # Examples
 You can find example bots in me.tomasztopola.clients. 
-StupidStubbornClient always hits one location (0,0). 
-JustRandomClient hits random locations on board. 
-NotSoSimpleClient does same thing as JustRandomClient, but extends SimpleClient instead of implementing BatlleShipClient.
-MindfulButStillRandomClient doesn't hit the same spot twice.
+1. StupidStubbornClient always hits one location (0,0). 
+2. JustRandomClient hits random locations on board. 
+3. NotSoSimpleClient does same thing as JustRandomClient, but extends SimpleClient instead of implementing BattleShipClient.
+4. MindfulButStillRandomClient doesn't hit the same spot twice.
 
 # I'm new to Object-Oriented Programming
 Here are some rules that will help you keep your project organised.
