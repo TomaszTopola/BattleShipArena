@@ -22,6 +22,13 @@ JustRandomClient hits random locations on board.
 NotSoSimpleClient does same thing as JustRandomClient, but extends SimpleClient instead of implementing BatlleShipClient.
 MindfulButStillRandomClient doesn't hit the same spot twice.
 
+# I'm new to Object-Oriented Programming
+Here are some rules that will help you keep your project organised.
+1. Class name should be the same as file name. If you want to rename it, use refactor function (your IDE should have one)
+2. Class name should start with upper case
+3. In this project we use camelCase names. It means that we don't use dashes to separate words. 
+   Just start every new word with capital.
+   
 # Tests
 If you want to test your bot if it fits expectations you can always use testClient() method in Main.java.
 It's not perfect but still more efficient than logging data to console. 
