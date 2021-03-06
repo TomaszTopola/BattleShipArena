@@ -1,4 +1,4 @@
-# BattleShipClient
+# BattleShipArena
 This is an arena for battle ship game. Your job is to create a bot that will win with all the others.
 
 # Setup and methods
