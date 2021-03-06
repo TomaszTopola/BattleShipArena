@@ -2,12 +2,20 @@ package me.tomasztopola.utils;
 
 import me.tomasztopola.rules.Rules;
 
+/**
+ * Stores location as 2-dimensional coordinates of x and y
+ */
 public class Location {
 
     final private int x;
     final private int y;
     final private int boardSize = Rules.getBoardSize();
 
+    /**
+     * using this you make sure your coordinates fit within game rules
+     * @param x coordinate on x axis
+     * @param y coordinate on y axis
+     */
     public Location(int x, int y){
         assertRules(x);
         assertRules(y);
@@ -29,13 +37,19 @@ public class Location {
         return this.y;
     }
 
+    /**
+     * Makes sure your new coordinates fit in the board
+     * @param x vector of x
+     * @param y vector of y
+     * @return Location translated with given vector
+     */
     public Location vector(int x, int y){
         return new Location(
             this.checkIfInBoundsForVector(x+this.x),    //X
             this.checkIfInBoundsForVector(y+this.y)     //Y
         );
     }
-
+    
     private int checkIfInBoundsForVector(int number){
         if(number < 0 ) return 0;
         else if(number >= boardSize) return boardSize-1;

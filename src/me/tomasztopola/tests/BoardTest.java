@@ -1,9 +1,11 @@
-package tests;
+package me.tomasztopola.tests;
 
 import me.tomasztopola.api.Test;
-import me.tomasztopola.rules.ShipsConfig;
 import me.tomasztopola.utils.BoardGenerator;
 
+/**
+ * Simple automated test for board generator
+ */
 public class BoardTest implements Test {
 
     final private BoardGenerator boardGenerator;

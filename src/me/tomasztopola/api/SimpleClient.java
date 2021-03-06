@@ -5,9 +5,13 @@ import me.tomasztopola.utils.Location;
 
 import java.util.Random;
 
+/**
+ * Simplified version of BattleShipClient that implements methods that in most cases are obvious.
+ * Best choice for beginners.
+ */
 public abstract class SimpleClient implements BattleShipClient{
 
-    private final int[][] board;
+    protected final int[][] board;
 
     public SimpleClient(){
         BoardGenerator boardGenerator = new BoardGenerator();

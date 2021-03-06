@@ -2,20 +2,29 @@ package me.tomasztopola.competition;
 
 import me.tomasztopola.api.BattleShipClient;
 import me.tomasztopola.api.ClientData;
+import me.tomasztopola.api.Contest;
 import me.tomasztopola.rules.Rules;
 
-public class OneVsOne{
+/**
+ * Runs 1 vs 1 battle between given clients
+ */
+public class OneVsOne implements Contest {
 
-    BattleShipClient client1;
-    BattleShipClient client2;
-    BattleShipClient winner;
+    private final BattleShipClient client1;
+    private final BattleShipClient client2;
+    private BattleShipClient winner;
 
+    /**
+     * @param client1 competitor 1
+     * @param client2 competitor 2
+     */
     public OneVsOne(BattleShipClient client1, BattleShipClient client2){
         this.client1 = client1;
         this.client2 = client2;
     }
 
-    public void runBattle(){
+
+    public void run() {
         // Init logs
         System.out.println("Starting One vs One battle");
         System.out.println(client1.getBotName() + "     vs      " + client2.getBotName() + "\n");
