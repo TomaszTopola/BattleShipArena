@@ -30,6 +30,4 @@ public class Battle {
 
         competition.run();
     }
-
-
 }
