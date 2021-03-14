@@ -12,10 +12,10 @@ public class Rules {
      * @return set ints, where each one is length of a ship
      */
     public static ShipsConfig getShipsConfig(){
-//        int[] config = {5, 4, 3, 3, 2};
+        int[] config = {5, 4, 3, 3, 2};
 //        int[] config = {5, 3, 2, 2};
 //        int[] config = {4, 3, 3, 2};
-        int[] config = {2, 3, 3, 4};
+//        int[] config = {2, 3, 3, 4};
         return new ShipsConfig(config);
     }
 

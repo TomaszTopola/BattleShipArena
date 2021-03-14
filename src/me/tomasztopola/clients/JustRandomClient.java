@@ -2,6 +2,7 @@ package me.tomasztopola.clients;
 
 import me.tomasztopola.api.ClientData;
 import me.tomasztopola.api.BattleShipClient;
+import me.tomasztopola.rules.Rules;
 import me.tomasztopola.utils.BoardGenerator;
 import me.tomasztopola.utils.Location;
 
@@ -36,7 +37,7 @@ public class JustRandomClient implements BattleShipClient {
 
     @Override
     public Location attack(ClientData opponent) {
-        return new Location(r.nextInt(10), r.nextInt(10));
+        return new Location(r.nextInt(Rules.getBoardSize()), r.nextInt(Rules.getBoardSize()));
     }
 
     @Override

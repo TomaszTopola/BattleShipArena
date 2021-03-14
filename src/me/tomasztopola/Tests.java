@@ -1,5 +1,6 @@
 package me.tomasztopola;
 
+import me.jerzytopola.Gruszka;
 import me.tomasztopola.clients.NotSoSimpleClient;
 import me.tomasztopola.rules.ShipsConfig;
 import me.tomasztopola.tests.BoardTest;
@@ -13,14 +14,14 @@ public class Tests {
     }
 
     private static void testClient(){
-        TestClient test = new TestClient(new NotSoSimpleClient());
+        TestClient test = new TestClient(new Gruszka());
         test.run();
     }
 
     private static void testBoardGenerator(){
         BoardTest boardTest = new BoardTest(new BoardGenerator(
-                new ShipsConfig(new int[]{2,3,}),
-                5
+                new ShipsConfig(new int[]{5,4,3,3,2}),
+                10
         ));
         boardTest.run();
     }

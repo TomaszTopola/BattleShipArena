@@ -39,7 +39,7 @@ public class BoardGenerator {
      * @return board as int[][]
      */
     public int[][] getBoard(){
-        assert board != null : "Board needs to be generated first. Use generate() or generateEmpty()";
+        assert board != null : "Board needs to be generated first. Use generate()";
         return board;
     }
 

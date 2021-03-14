@@ -15,7 +15,7 @@ public class Competition {
         Rules.assertClientRules(client);
         competitors.add(client);
     }
-
+/*
     public void runCompetition(){
         for(int i=0; i<competitors.size(); i++){
             OneVsOne battle;
@@ -25,5 +25,8 @@ public class Competition {
                  BattleShipClient winner = battle.getWinner();
             }
         }
+    }
+*/
+    public void run() {
     }
 }

@@ -2,6 +2,7 @@ package me.tomasztopola.clients;
 
 import me.tomasztopola.api.BattleShipClient;
 import me.tomasztopola.api.ClientData;
+import me.tomasztopola.rules.Rules;
 import me.tomasztopola.utils.BoardGenerator;
 import me.tomasztopola.utils.Location;
 
@@ -24,7 +25,7 @@ public class MindfulButStillRandomClient implements BattleShipClient {
     public Location attack(ClientData opponent) {
         Location target;
         do {
-            target = new Location(r.nextInt(10), r.nextInt(10));
+            target = new Location(r.nextInt(Rules.getBoardSize()), r.nextInt(Rules.getBoardSize()));
         } while (boardOfOpponent[target.getY()][target.getX()] != 0);
 
         boardOfOpponent[target.getY()][target.getX()] = 1;

@@ -1,6 +1,8 @@
 package me.tomasztopola;
 
+import me.jerzytopola.Gruszka;
 import me.tomasztopola.clients.JustRandomClient;
+import me.tomasztopola.clients.MindfulButStillRandomClient;
 import me.tomasztopola.clients.NotSoSimpleClient;
 import me.tomasztopola.competition.Competition;
 import me.tomasztopola.competition.OneVsOne;
@@ -25,8 +27,8 @@ public class Battle {
         OneVsOne competition;
         competition = new OneVsOne();
 
-        competition.addCompetitor(new JustRandomClient());
-        competition.addCompetitor(new NotSoSimpleClient());
+        competition.addCompetitor(new Gruszka());
+        competition.addCompetitor(new MindfulButStillRandomClient());
 
         competition.run();
     }
