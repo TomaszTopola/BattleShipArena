@@ -5,12 +5,11 @@ import me.tomasztopola.api.ClientData;
 import me.tomasztopola.api.Test;
 import me.tomasztopola.clients.StupidStubbornClient;
 import me.tomasztopola.rules.Rules;
-import me.tomasztopola.utils.BoardGenerator;
 import me.tomasztopola.utils.Location;
 
 public class TestClient implements Test {
 
-    private final BattleShipClient client;
+    private BattleShipClient client;
 
     public TestClient(BattleShipClient client){
         assert client != null : "Provided client is null.";
@@ -21,10 +20,7 @@ public class TestClient implements Test {
         assert testGetBotName() : "Client returns null string value.";
         System.out.println("Client returned expected value botName");
 
-        assert testAttack1() : "Client has returned null Location from attack() method.";
-        System.out.println("Client has passed location test.");
-
-        if(testAttack2())System.out.println("Client has passed attack test.");
+        if(testAttack())System.out.println("Client has passed attack test.");
 
         assert testGetFloatingShips() : "Client didn't return expected value of floating ships.";
         System.out.println("Client has returned expected value of floating ships.");
@@ -39,19 +35,13 @@ public class TestClient implements Test {
         return client.getBotName() != null;
     }
 
-    private boolean testAttack1(){
-        for(int i=0; i<100; i++){
-            Location target = client.attack(new ClientData(client));
-            if(target == null) return false;
-        }
-        return true;
-    }
-
-    private boolean testAttack2(){
+    private boolean testAttack(){
         BattleShipClient testBoard = new StupidStubbornClient();
         int maxRounds = (int) Math.pow(Rules.getBoardSize(), 2);
         for(int i=0; true; i++){
-            testBoard.receiveAttack(client.attack(new ClientData(testBoard)));
+            Location target = client.attack(new ClientData(testBoard));
+            assert target != null : "Client returned null target";
+            testBoard.receiveAttack(target);
             if(testBoard.getFloatingShips() == 0) break;
             if(i>=maxRounds){
                 System.out.println("After " +maxRounds + " rounds client didn't take down enemy.");

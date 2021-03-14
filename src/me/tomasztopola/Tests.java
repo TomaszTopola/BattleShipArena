@@ -1,6 +1,8 @@
 package me.tomasztopola;
 
 import me.jerzytopola.Gruszka;
+import me.tomasztopola.clients.JustRandomClient;
+import me.tomasztopola.clients.MindfulButStillRandomClient;
 import me.tomasztopola.clients.NotSoSimpleClient;
 import me.tomasztopola.rules.ShipsConfig;
 import me.tomasztopola.tests.BoardTest;
@@ -14,7 +16,7 @@ public class Tests {
     }
 
     private static void testClient(){
-        TestClient test = new TestClient(new Gruszka());
+        TestClient test = new TestClient(new MindfulButStillRandomClient());
         test.run();
     }
 
