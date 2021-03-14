@@ -39,9 +39,7 @@ public class TestClient implements Test {
         BattleShipClient testBoard = new StupidStubbornClient();
         int maxRounds = (int) Math.pow(Rules.getBoardSize(), 2);
         for(int i=0; true; i++){
-            Location target = client.attack(new ClientData(testBoard));
-            assert target != null : "Client returned null target";
-            testBoard.receiveAttack(target);
+            client.attack(new ClientData(testBoard));
             if(testBoard.getFloatingShips() == 0) break;
             if(i>=maxRounds){
                 System.out.println("After " +maxRounds + " rounds client didn't take down enemy.");

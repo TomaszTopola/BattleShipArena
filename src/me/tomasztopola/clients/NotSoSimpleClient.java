@@ -12,7 +12,7 @@ public class NotSoSimpleClient extends SimpleClient {
     private final Random r = new Random();
 
     @Override
-    public Location attack(ClientData opponent) {
-        return new Location(r.nextInt(Rules.getBoardSize()), r.nextInt(Rules.getBoardSize()));
+    public void attack(ClientData opponent) {
+        opponent.attack(new Location(r.nextInt(Rules.getBoardSize()), r.nextInt(Rules.getBoardSize())));
     }
 }

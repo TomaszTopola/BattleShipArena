@@ -41,5 +41,5 @@ public abstract class SimpleClient implements BattleShipClient{
     }
 
     @Override
-    public abstract Location attack(ClientData opponent);
+    public abstract void attack(ClientData opponent);
 }

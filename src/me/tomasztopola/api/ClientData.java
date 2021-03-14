@@ -10,7 +10,11 @@ public class ClientData {
     public ClientData(BattleShipClient client){
         this.client = client;
     }
+
     public int getFloatingShips(){
         return client.getFloatingShips();
+    }
+    public void attack(Location target){
+        client.receiveAttack(target);
     }
 }

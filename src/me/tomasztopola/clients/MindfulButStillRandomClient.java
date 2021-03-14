@@ -22,14 +22,14 @@ public class MindfulButStillRandomClient implements BattleShipClient {
     }
 
     @Override
-    public Location attack(ClientData opponent) {
+    public void attack(ClientData opponent) {
         Location target;
         do {
             target = new Location(r.nextInt(Rules.getBoardSize()), r.nextInt(Rules.getBoardSize()));
         } while (boardOfOpponent[target.getY()][target.getX()] != 0);
 
         boardOfOpponent[target.getY()][target.getX()] = 1;
-        return target;
+        opponent.attack(target);
     }
 
     @Override

@@ -29,8 +29,8 @@ public class OneVsOne implements Contest {
         while (true) { //this sets while as infinite (unless condition was met)
             System.out.println("Ships left after round " + countRounds + ":");
 
-            client1.receiveAttack(client2.attack(new ClientData(client1)));
-            client2.receiveAttack(client1.attack(new ClientData(client2)));
+            client2.attack(new ClientData(client1));
+            client1.attack(new ClientData(client2));
 
             System.out.println(client1.getBotName() + ": " + client1.getFloatingShips());
             System.out.println(client2.getBotName() + ": " + client2.getFloatingShips());

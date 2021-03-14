@@ -18,7 +18,7 @@ public class Gruszka extends SimpleClient {
     }
 
     @Override
-    public Location attack(ClientData opponent) {
+    public void attack(ClientData opponent) {
         int x,y;
         while(true){
             x=r.nextInt(Rules.getBoardSize());
@@ -26,6 +26,6 @@ public class Gruszka extends SimpleClient {
             if(boardOfOpponent[y][x]==0) break;
         }
         boardOfOpponent[y][x]=1;
-        return new Location(x,y);
+        opponent.attack(new Location(x,y));
     }
 }

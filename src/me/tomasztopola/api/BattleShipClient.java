@@ -22,10 +22,10 @@ public interface BattleShipClient {
 
     /**
      * The most important method. It determines how fast your client defeats its opponent.
+     * Must end with <code>opponent.attack();</code>
      * @param opponent allows to call getFloatingShips()
-     * @return Location with target of bombing
      */
-    Location attack(ClientData opponent);
+    void attack(ClientData opponent);
 
     /**
      * We want to know how you named your bot. Go ahead, tell us

@@ -32,8 +32,8 @@ public class StupidStubbornClient implements BattleShipClient {
     }
 
     @Override
-    public Location attack(ClientData opponent) {
-        return new Location(0,0);
+    public void attack(ClientData opponent) {
+        opponent.attack(new Location(0,0));
     }
 
     @Override
