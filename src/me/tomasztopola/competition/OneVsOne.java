@@ -10,19 +10,9 @@ import me.tomasztopola.rules.Rules;
  */
 public class OneVsOne implements Contest {
 
-    private final BattleShipClient client1;
-    private final BattleShipClient client2;
+    private BattleShipClient client1;
+    private BattleShipClient client2;
     private BattleShipClient winner;
-
-    /**
-     * @param client1 competitor 1
-     * @param client2 competitor 2
-     */
-    public OneVsOne(BattleShipClient client1, BattleShipClient client2){
-        this.client1 = client1;
-        this.client2 = client2;
-    }
-
 
     public void run() {
         // Init logs
@@ -70,6 +60,12 @@ public class OneVsOne implements Contest {
         }
         else
             System.out.println("Something went wrong. Battle stopped before bots lost all their ships.");
+    }
+
+    @Override
+    public void addCompetitor(BattleShipClient client) {
+        if(client1 == null) client1 = client;
+        else client2 = client;
     }
 
     public BattleShipClient getWinner(){

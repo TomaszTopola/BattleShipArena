@@ -8,6 +8,12 @@ public interface Contest {
     void run();
 
     /**
+     * Adds client to competition.
+     * @param client your bot
+     */
+    void addCompetitor(BattleShipClient client);
+
+    /**
      * @return winner - client who won competition
      */
     BattleShipClient getWinner();

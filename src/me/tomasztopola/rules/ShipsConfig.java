@@ -4,7 +4,7 @@ public class ShipsConfig {
     private final int[] shipsList;
     private int sumOfShips;
 
-    ShipsConfig(int[] ships){
+    public ShipsConfig(int[] ships){
         this.shipsList = ships;
 
         assert ships.length > 1 : "Min. ships amount is 2. Got " + ships.length;
@@ -16,6 +16,11 @@ public class ShipsConfig {
 
             this.sumOfShips += ship;
         }
+    }
+
+    private int calculateMaxShips(int size){
+        //TODO
+        return 0;
     }
 
     public int getSumOfShips() {
