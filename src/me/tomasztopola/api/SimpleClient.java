@@ -18,7 +18,11 @@ public abstract class SimpleClient implements BattleShipClient{
         boardGenerator.generate();
         board = boardGenerator.getBoard();
     }
-
+    /**
+     * Gets information about client's board and to determine who wins. Opponent may use it to check if it hit
+     * the target
+     * @return int value of floating ship units
+     */
     @Override
     public int getFloatingShips() {
         int floatingShips = 0;
@@ -29,17 +33,28 @@ public abstract class SimpleClient implements BattleShipClient{
         }
         return floatingShips;
     }
-
+    /**
+     * Changes floating ship units amount. Here your bot receives opponent's target and takes appropriate
+     * action on its board.
+     * @param target this is where your bombs will fall
+     */
     @Override
     public void receiveAttack(Location target) {
         board[target.getY()][target.getX()] = 0;
     }
-
+    /**
+     * Tells Competition how you named your bot
+     * @return Client's name
+     */
     @Override
     public String getBotName() {
         return this.getClass().getName();
     }
-
+    /**
+     * Finds and attacks opponent.
+     * Must end with <code>opponent.attack();</code>
+     * @param opponent ClientData API of opponent
+     */
     @Override
     public abstract void attack(ClientData opponent);
 }

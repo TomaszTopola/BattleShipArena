@@ -42,7 +42,7 @@ public class TestClient implements Test {
             client.attack(new ClientData(testBoard));
             if(testBoard.getFloatingShips() == 0) break;
             if(i>=maxRounds){
-                System.out.println("After " +maxRounds + " rounds client didn't take down enemy.");
+                System.out.println("After " +maxRounds + " rounds client didn't take down the enemy.");
                 return false;
             }
         }

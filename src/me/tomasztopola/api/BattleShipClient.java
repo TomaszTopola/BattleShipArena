@@ -8,27 +8,28 @@ import me.tomasztopola.utils.Location;
 public interface BattleShipClient {
 
     /**
-     * Used to get information about client's board and to determine who wins. Opponent may use it to check if it hit
+     * Gets information about client's board and to determine who wins. Opponent may use it to check if it hit
      * the target
      * @return int value of floating ship units
      */
     int getFloatingShips();
 
     /**
-     * Should affect floating ship units.
+     * Changes floating ship units amount. Here your bot receives opponent's target and takes appropriate
+     * action on its board.
      * @param target this is where your bombs will fall
      */
     void receiveAttack(Location target);
 
     /**
-     * The most important method. It determines how fast your client defeats its opponent.
+     * Finds and attacks opponent.
      * Must end with <code>opponent.attack();</code>
-     * @param opponent allows to call getFloatingShips()
+     * @param opponent ClientData API of opponent
      */
     void attack(ClientData opponent);
 
     /**
-     * We want to know how you named your bot. Go ahead, tell us
+     * Tells the Competition how you named your bot
      * @return Client's name
      */
     String getBotName();

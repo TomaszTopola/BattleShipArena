@@ -3,7 +3,7 @@ package me.tomasztopola.api;
 import me.tomasztopola.utils.Location;
 
 /**
- * provides getFloatingShips to opponent
+ * Provides required actions to competitors. Prevents from unauthorized method calls by competitors.
  */
 public class ClientData {
     private BattleShipClient client;
@@ -17,6 +17,11 @@ public class ClientData {
         return client.getFloatingShips();
     }
 
+    /**
+     * Must be called once in round by each competitor. Calls BattleShipClient.receiveAttack().
+     * @see me.tomasztopola.api.BattleShipClient#receiveAttack(Location)
+     * @param target location with aim coordinates passed to opponent.
+     */
     public void attack(Location target){
         assert hasntAttacked : "Multiple attack called. You can send coordinates only once in round.";
         client.receiveAttack(target);
