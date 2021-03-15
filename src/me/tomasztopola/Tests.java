@@ -11,8 +11,8 @@ import me.tomasztopola.utils.BoardGenerator;
 
 public class Tests {
     public static void main (String[] args){
-        testClient();
-//        testBoardGenerator();
+//        testClient();
+        testBoardGenerator();
     }
 
     private static void testClient(){

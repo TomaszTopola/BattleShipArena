@@ -158,8 +158,8 @@ public class BoardGenerator {
         else{
             for(int y=0; y<this.boardSize; y++){
                 for(int x=0; x<this.boardSize; x++){
-                    if(board[y][x]==0) System.out.print('~');
-                    else System.out.print('■');
+                    if(board[y][x]==0) System.out.print('/');
+                    else System.out.print('#');
                 }
                 System.out.println();
             }
