@@ -13,19 +13,30 @@ public class Gruszka extends SimpleClient {
     Random r = new Random();//liczby losowe
     int[][] boardOfOpponent;
 
-    public Gruszka(){
+    public Gruszka() {
         boardOfOpponent = new BoardGenerator().generateEmpty();
     }
 
     @Override
     public void attack(ClientData opponent) {
-        int x,y;
-        while(true){
-            x=r.nextInt(Rules.getBoardSize());
-            y=r.nextInt(Rules.getBoardSize());
-            if(boardOfOpponent[y][x]==0) break;
+        int x, y;
+        while (true) {
+            x = r.nextInt(Rules.getBoardSize());
+            y = r.nextInt(Rules.getBoardSize());
+            if (boardOfOpponent[y][x] == 0) break;
         }
-        boardOfOpponent[y][x]=1;
-        opponent.attack(new Location(x,y));
+        boardOfOpponent[y][x] = 1;
+        opponent.attack(new Location(x, y));
+
+        int hit = opponent.getFloatingShips();
+
+        if (hit == 1) {
+            if (y < Rules.getBoardSize()) {
+                if (y >= 1) {
+                    int z = y - 1;
+                    opponent.attack(new Location(x, z));
+                }
+            }
+        }
     }
 }
