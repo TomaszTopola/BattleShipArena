@@ -2,6 +2,8 @@ package me.tomasztopola.utils;
 
 import me.tomasztopola.rules.Rules;
 
+import java.util.Random;
+
 /**
  * Stores location as 2-dimensional coordinates of x and y
  */
@@ -23,16 +25,18 @@ public class Location {
         this.y = y;
     }
 
-    //assertions
-    private void assertRules(int digit){
-        assert ( digit >= 0 ) : "Coordinate should have positive value. Got " +  digit;
-        assert ( digit < boardSize ) : "Coordinate should be smaller or equal to " + Rules.getBoardSize() + ". Got " + digit;
-    }
-
-    //getters
+    /**
+     * X coordinate getter
+     * @return value of X coordinate
+     */
     public int getX(){
         return this.x;
     }
+
+    /**
+     * Y coordinate getter
+     * @return value of Y coordinate
+     */
     public int getY(){
         return this.y;
     }
@@ -49,10 +53,27 @@ public class Location {
             this.checkIfInBoundsForVector(y+this.y)     //Y
         );
     }
-    
+
+    /**
+     * Generates new random Location within board bounds.
+     * @return new Location(randomX, randomY)
+     */
+    public static Location random(){
+        return new Location(
+                new Random().nextInt(Rules.getBoardSize()),
+                new Random().nextInt(Rules.getBoardSize())
+        );
+    }
+
     private int checkIfInBoundsForVector(int number){
         if(number < 0 ) return 0;
         else if(number >= boardSize) return boardSize-1;
         else return number;
+    }
+
+    //assertions
+    private void assertRules(int digit){
+        assert ( digit >= 0 ) : "Coordinate should have positive value. Got " +  digit;
+        assert ( digit < boardSize ) : "Coordinate should be smaller or equal to " + Rules.getBoardSize() + ". Got " + digit;
     }
 }
